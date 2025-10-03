@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Avaliação - Símix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <strong>Símix</strong> Avaliação de Desempenho
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="help-link">Ajuda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-section="dashboard">
+                                <i class="bi bi-speedometer2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="collaborators">
+                                <i class="bi bi-people-fill"></i> Colaboradores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="indicators">
+                                <i class="bi bi-clipboard-data"></i> Indicadores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="evaluation">
+                                <i class="bi bi-pencil-square"></i> Avaliações
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="reports">
+                                <i class="bi bi-bar-chart-fill"></i> Relatórios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-section="settings">
+                                <i class="bi bi-gear-fill"></i> Configurações
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 ml-sm-auto px-4 py-4">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Dashboard</h2>
+                        <div>
+                            <select class="form-select form-select-sm w-auto d-inline-block">
+                                <option>Ciclo Atual (JUL/2023)</option>
+                                <option>Ciclo Anterior (JAN/2023)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total de Colaboradores</h5>
+                                    <h2 class="card-text">94</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Avaliações Pendentes</h5>
+                                    <h2 class="card-text">12</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Avaliações Concluídas</h5>
+                                    <h2 class="card-text">82</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Média Geral</h5>
+                                    <h2 class="card-text">7.4</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Distribuição Ninebox</div>
+                                <div class="card-body">
+                                    <div class="ninebox-grid">
+                                        <div class="ninebox-cell">Alto Potencial<br>(5)</div>
+                                        <div class="ninebox-cell highlight">Estrelas<br>(12)</div>
+                                        <div class="ninebox-cell">Desempenho Forte<br>(8)</div>
+                                        <div class="ninebox-cell">Potencial Médio<br>(10)</div>
+                                        <div class="ninebox-cell">Core<br>(35)</div>
+                                        <div class="ninebox-cell">Desempenho Médio<br>(15)</div>
+                                        <div class="ninebox-cell">Baixo Potencial<br>(4)</div>
+                                        <div class="ninebox-cell">Risco<br>(3)</div>
+                                        <div class="ninebox-cell">Desempenho Fraco<br>(2)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Média por Departamento</div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="departmentChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">Últimas Avaliações</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Colaborador</th>
+                                                    <th>Departamento</th>
+                                                    <th>Avaliação</th>
+                                                    <th>Potencial</th>
+                                                    <th>Status</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Maria A. Xavier</td>
+                                                    <td>Diretoria</td>
+                                                    <td>7.45</td>
+                                                    <td>2.14</td>
+                                                    <td><span class="badge bg-success">Concluído</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary">Ver</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>José H. Moura</td>
+                                                    <td>TI</td>
+                                                    <td>7.78</td>
+                                                    <td>2.42</td>
+                                                    <td><span class="badge bg-success">Concluído</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary">Ver</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Vagner F.</td>
+                                                    <td>Operações</td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <td><span class="badge bg-warning">Pendente</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-primary">Avaliar</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collaborators Section -->
+                <div id="collaborators" class="content-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Cadastro de Colaboradores</h2>
+                        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#addCollaboratorModal">
+                            + Novo Colaborador
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="collaboratorsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nome</th>
+                                            <th>Atribuição</th>
+                                            <th>Admissão</th>
+                                            <th>Tipo</th>
+                                            <th>Departamento</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><a href="#" class="collaborator-details" data-id="1">Maria A. Xavier</a></td>
+                                            <td>Gestor</td>
+                                            <td>01/05/2015</td>
+                                            <td><span class="badge bg-primary">Gestor</span></td>
+                                            <td>Diretoria</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Editar</button>
+                                                <button class="btn btn-sm btn-danger">Excluir</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><a href="#" class="collaborator-details" data-id="2">José H. Moura</a></td>
+                                            <td>Gestor</td>
+                                            <td>20/05/2018</td>
+                                            <td><span class="badge bg-primary">Gestor</span></td>
+                                            <td>TI</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Editar</button>
+                                                <button class="btn btn-sm btn-danger">Excluir</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>20</td>
+                                            <td><a href="#" class="collaborator-details" data-id="20">Vagner F.</a></td>
+                                            <td>Analista</td>
+                                            <td>19/06/2018</td>
+                                            <td><span class="badge bg-info">Não Gestor</span></td>
+                                            <td>Operações</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Editar</button>
+                                                <button class="btn btn-sm btn-danger">Excluir</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicators Section -->
+                <div id="indicators" class="content-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Indicadores de Competência</h2>
+                        <div>
+                            <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#addIndicatorModal">
+                                + Novo Indicador
+                            </button>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs" id="indicatorTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="gestores-tab" data-bs-toggle="tab" data-bs-target="#gestores" type="button" role="tab">Gestores</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="nao-gestores-tab" data-bs-toggle="tab" data-bs-target="#nao-gestores" type="button" role="tab">Não Gestores</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="indicatorTabsContent">
+                        <div class="tab-pane fade show active" id="gestores" role="tabpanel">
+                            <div class="row mt-4">
+                                <!-- Indicadores para Gestores - Categoria A -->
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A1 - Capacidade de Mobilização</h5>
+                                            <p class="card-text">Mobiliza, envolve e compromete seus colaboradores, visando a realização dos objetivos e metas definidas e estimulando a equipe a valorizar o what faz.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A2 - Delegação / Feedback</h5>
+                                            <p class="card-text">Delega e compartilha responsabilidades, tarefas e decisões. Exerce o feedback, praticando o elogio e a crítica, reconhecendo e compartilhando resultados com a equipe.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A3 - Monitoramento</h5>
+                                            <p class="card-text">Interpreta e repassa informações recebidas, com agilidade, confiabilidade e clareza. Comunica-se com a equipe, visando monitorar seu desempenho e atingir os objetivos pretendidos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A4 - Visão Estratégica</h5>
+                                            <p class="card-text">Influencia estratégias e viabiliza sua aplicação, considerando as tendências dos ambientes interno e externo and as expectativas dos públicos envolvidos. Antecipa e gerencia riscos e oportunidades.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A5 - Desenvolvimento / Formação de Sucessores</h5>
+                                            <p class="card-text">Auxilia os colaboradores no desenvolvimento dos seus potenciais, gera um clima organizacional favorável ao desenvolvimento e desempenho dos profissionais e forma sucessores.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">A6 - Tratamento de Conflitos</h5>
+                                            <p class="card-text">Trata conflitos, ouvindo, avaliando e decidindo com imparcialidade, dando espaço para a equipe discordar e influenciar em decisões e processos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Indicadores para Gestores - Categoria B -->
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B1 - Capacidade de Orientação</h5>
+                                            <p class="card-text">Conhece as atividades e processos da área, assegurando corretas orientações para a sua equipe. Facilita a introdução de novas tarefas ou processos, esclarecendo dúvidas.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B2 - Planejamento</h5>
+                                            <p class="card-text">Estrutura and sistematiza processos visando o planejamento, acompanhamento e organização das atividades e do ambiente de trabalho para melhor utilização dos recursos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B3 - Comunicação</h5>
+                                            <p class="card-text">Escuta atentamente e expressa suas ideias, verbalmente e por escrito, usando uma linguagem clara e objetiva e certificando-se do entendimento das mensagens transmitidas ou recebidas.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B4 - Capacidade de Negociação</h5>
+                                            <p class="card-text">Negocia com habilidade com fornecedores, prestadores de serviços e usuários, observando regras, acordos e contratos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B5 - Geração de Conhecimento</h5>
+                                            <p class="card-text">Busca, sistematiza, registra e dissemina o conhecimento, de modo a transformá-lo em vantagem para a entidade.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B6 - Autodesenvolvimento</h5>
+                                            <p class="card-text">Procura evoluir pessoal, profissional e intelectualmente, buscando aperfeiçoamento and atualização contínua de seus conhecimentos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Os demais indicadores para gestores (C, D, E, F) seguiriam o mesmo padrão -->
+                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nao-gestores" role="tabpanel">
+                            <div class="row mt-4">
+                                <!-- Indicadores para Não Gestores - Categoria B -->
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B1 - Conhecimento Técnico</h5>
+                                            <p class="card-text">Detém os conhecimentos, habilidades e experiência necessários às suas atividades, aplicando recursos teóricos e práticos para sua realização.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B2 - Capacidade Analítica</h5>
+                                            <p class="card-text">Identifica, interpreta e avalia diferentes tipos de dados, relacionando-os de forma lógica e com sentido crítico. Sabe como avaliar a qualidade dos registros internos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B3 - Organização</h5>
+                                            <p class="card-text">Planeja e organiza adequadamente suas tarefas, materiais, documentos e outros que utiliza para realização de seu trabalho.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B4 - Comunicação</h5>
+                                            <p class="card-text">Escuta atentamente e expressa suas ideias, verbalmente e por escrito, usando uma linguagem clara e objetiva e certificando-se do entendimento das mensagens transmitidas ou recebidas.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B5 - Capacidade de Negociação</h5>
+                                            <p class="card-text">Negocia com habilidade com fornecedores, prestadores de serviços e usuários, observando regras, acordos e contratos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B6 - Introdução de Novas Práticas</h5>
+                                            <p class="card-text">Executa atividades de forma crítica, sugere e implanta novas práticas de trabalho visando a melhoria das atividades e processos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B7 - Geração de Conhecimento</h5>
+                                            <p class="card-text">Busca, sistematiza, registra e dissemina o conhecimento, de modo a transformá-lo em vantagem para a entidade.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card indicator-card">
+                                        <div class="card-body">
+                                            <span class="indicator-status status-ativo">Ativo</span>
+                                            <h5 class="card-title">B8 - Autodesenvolvimento</h5>
+                                            <p class="card-text">Procura evoluir pessoal, profissional e intelectualmente, buscando aperfeiçoamento e atualização contínua de seus conhecimentos.</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-outline-primary">Editar</button>
+                                                <button class="btn btn-sm btn-outline-secondary">Desativar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Os demais indicadores para não gestores (C, D, E, F) seguiriam o mesmo padrão -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evaluation Section -->
+                <div id="evaluation" class="content-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Avaliações de Desempenho</h2>
+                        <button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#newEvaluationModal">
+                            + Nova Avaliação
+                        </button>
+                    </div>
+
+                    <ul class="nav nav-tabs" id="evaluationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="auto-gestor-tab" data-bs-toggle="tab" data-bs-target="#auto-gestor" type="button" role="tab">Auto Avaliação - Gestor</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="comp-gestor-tab" data-bs-toggle="tab" data-bs-target="#comp-gestor" type="button" role="tab">Competências - Gestor</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="potencial-gestor-tab" data-bs-toggle="tab" data-bs-target="#potencial-gestor" type="button" role="tab">Potencial - Gestor</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="auto-nao-gestor-tab" data-bs-toggle="tab" data-bs-target="#auto-nao-gestor" type="button" role="tab">Auto Avaliação - Não Gestor</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="comp-nao-gestor-tab" data-bs-toggle="tab" data-bs-target="#comp-nao-gestor" type="button" role="tab">Competências - Não Gestor</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="potencial-nao-gestor-tab" data-bs-toggle="tab" data-bs-target="#potencial-nao-gestor" type="button" role="tab">Potencial - Não Gestor</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-4" id="evaluationTabsContent">
+                        <!-- Auto Avaliação Gestor -->
+                        <div class="tab-pane fade show active" id="auto-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Auto Avaliação - Gestor</div>
+                                <div class="card-body">
+                                    <div class="rating-scale">
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #dc3545;">Insatisfatório</div>
+                                            <div class="rating-value">1 a 4</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #ffc107;">Regular</div>
+                                            <div class="rating-value">5 a 6</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #28a745;">Bom</div>
+                                            <div class="rating-value">7 a 8</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #007bff;">Excelente</div>
+                                            <div class="rating-value">9 a 10</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <form id="autoEvaluationManagerForm">
+                                        <div class="mb-3">
+                                            <label for="managerSelect" class="form-label">Selecione o Gestor</label>
+                                            <select class="form-select" id="managerSelect" required>
+                                                <option value="">Selecione...</option>
+                                                <option value="1">Maria A. Xavier</option>
+                                                <option value="2">José H. Moura</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="competence-item">
+                                            <h5>A1 - Capacidade de Mobilização</h5>
+                                            <p>Mobiliza, envolve e compromete seus colaboradores, visando a realização dos objetivos e metas definidas e estimulando a equipe a valorizar o que faz.</p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Autoavaliação (0-10)</label>
+                                                <input type="number" class="form-control" min="0" max="10" step="0.1" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Comentários</label>
+                                                <textarea class="form-control" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="competence-item">
+                                            <h5>A2 - Delegação / Feedback</h5>
+                                            <p>Delega e compartilha responsabilidades, tarefas e decisões. Exerce o feedback, praticando o elogio e a crítica, reconhecendo e compartilhando resultados com a equipe.</p>
+                                            <div class="mb-3">
+                                                <label class="form-label">Autoavaliação (0-10)</label>
+                                                <input type="number" class="form-control" min="0" max="10" step="0.1" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Comentários</label>
+                                                <textarea class="form-control" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-accent">Salvar Autoavaliação</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Outras abas de avaliação seriam implementadas de forma similar -->
+                        <div class="tab-pane fade" id="comp-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Avaliação de Competências - Gestor</div>
+                                <div class="card-body">
+                                    <div class="rating-scale">
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #dc3545;">Insatisfatório</div>
+                                            <div class="rating-value">1 a 4</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #ffc107;">Regular</div>
+                                            <div class="rating-value">5 a 6</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #28a745;">Bom</div>
+                                            <div class="rating-value">7 a 8</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #007bff;">Excelente</div>
+                                            <div class="rating-value">9 a 10</div>
+                                        </div>
+                                    </div>
+                                    <p>Formulário de avaliação de competências para gestores.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="potencial-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Avaliação de Potencial - Gestor</div>
+                                <div class="card-body">
+                                    <p>Formulário de avaliação de potencial para gestores.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="auto-nao-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Auto Avaliação - Não Gestor</div>
+                                <div class="card-body">
+                                    <div class="rating-scale">
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #dc3545;">Insatisfatório</div>
+                                            <div class="rating-value">1 a 4</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #ffc107;">Regular</div>
+                                            <div class="rating-value">5 a 6</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #28a745;">Bom</div>
+                                            <div class="rating-value">7 a 8</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #007bff;">Excelente</div>
+                                            <div class="rating-value">9 a 10</div>
+                                        </div>
+                                    </div>
+                                    <p>Formulário de autoavaliação para não gestores.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="comp-nao-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Avaliação de Competências - Não Gestor</div>
+                                <div class="card-body">
+                                    <div class="rating-scale">
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #dc3545;">Insatisfatório</div>
+                                            <div class="rating-value">1 a 4</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #ffc107;">Regular</div>
+                                            <div class="rating-value">5 a 6</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #28a745;">Bom</div>
+                                            <div class="rating-value">7 a 8</div>
+                                        </div>
+                                        <div class="rating-item">
+                                            <div class="rating-label" style="color: #007bff;">Excelente</div>
+                                            <div class="rating-value">9 a 10</div>
+                                        </div>
+                                    </div>
+                                    <p>Formulário de avaliação de competências para não gestores.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="potencial-nao-gestor" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">Avaliação de Potencial - Não Gestor</div>
+                                <div class="card-body">
+                                    <p>Formulário de avaliação de potencial para não gestores.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Section -->
+                <div id="reports" class="content-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Relatórios e Gráficos</h2>
+                        <div>
+                            <select class="form-select form-select-sm w-auto d-inline-block">
+                                <option>Ciclo Atual (JUL/2023)</option>
+                                <option>Ciclo Anterior (JAN/2023)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Comparativo Autoavaliação x Avaliação do Gestor</div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="comparisonChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Evolução de Desempenho</div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="performanceChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Distribuição por Competência</div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="competenceChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-header">Potencial x Desempenho</div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="potentialChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="settings" class="content-section">
+                    <h2>Configurações do Sistema</h2>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">Configurações Gerais</div>
+                        <div class="card-body">
+                            <form id="generalSettingsForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Meses por ciclo</label>
+                                        <input type="number" class="form-control" value="4" min="1" max="12">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Tempo de duração do ciclo (vezes)</label>
+                                        <input type="number" class="form-control" value="3" min="1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Ciclo atual inicia em</label>
+                                        <input type="month" class="form-control" value="2023-10">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Duração do Ciclo de Avaliação (meses)</label>
+                                        <input type="number" class="form-control" value="6" min="1" max="12">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Escala de Avaliação (0-10)</label>
+                                        <input type="number" class="form-control" value="10" min="5" max="10" readonly>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Nota Mínima para Aprovação</label>
+                                    <input type="number" class="form-control" value="7" min="0" max="10" step="0.1">
+                                </div>
+                                <button type="submit" class="btn btn-accent">Salvar Configurações</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="database-section">
+                        <h4>Conexão com Banco de Dados PostgreSQL</h4>
+                        <form id="databaseConfigForm">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Host</label>
+                                    <input type="text" class="form-control" value="localhost">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Porta</label>
+                                    <input type="number" class="form-control" value="5432">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nome do Banco</label>
+                                    <input type="text" class="form-control" value="avaliacao_db">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Usuário</label>
+                                    <input type="text" class="form-control" value="avaliacao_user">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Senha</label>
+                                <input type="password" class="form-control" value="********">
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="enableSSL" checked>
+                                    <label class="form-check-label" for="enableSSL">
+                                        Habilitar SSL
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-accent">Testar Conexão</button>
+                            <button type="submit" class="btn btn-primary">Salvar Configurações</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="addCollaboratorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Colaborador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="collaboratorForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome completo</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Atribuição</label>
+                            <div class="input-group">
+                                <select class="form-select" id="role" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="gestor">Gestor</option>
+                                    <option value="analista">Analista</option>
+                                    <option value="coordenador">Coordenador</option>
+                                    <option value="supervisor">Supervisor</option>
+                                </select>
+                                <button class="btn btn-outline-secondary" type="button" id="btnAddRole">+</button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="admission" class="form-label">Data de admissão</label>
+                            <input type="date" class="form-control" id="admission" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="type" class="form-label">Tipo</label>
+                            <select class="form-select" id="type" required>
+                                <option value="">Selecione...</option>
+                                <option value="gestor">Gestor</option>
+                                <option value="nao-gestor">Não Gestor</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="department" class="form-label">Departamento</label>
+                            <div class="input-group">
+                                <select class="form-select" id="department" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="diretoria">Diretoria</option>
+                                    <option value="ti">TI</option>
+                                    <option value="operacoes">Operações</option>
+                                    <option value="rh">RH</option>
+                                    <option value="financeiro">Financeiro</option>
+                                </select>
+                                <button class="btn btn-outline-secondary" type="button" id="btnAddDepartment">+</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-accent" id="saveCollaborator">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para adicionar cargo -->
+    <div class="modal fade" id="addRoleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Cargo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="roleForm">
+                        <div class="mb-3">
+                            <label for="newRoleName" class="form-label">Nome do Cargo</label>
+                            <input type="text" class="form-control" id="newRoleName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-accent" id="saveRole">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para adicionar departamento -->
+    <div class="modal fade" id="addDepartmentModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Departamento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="departmentForm">
+                        <div class="mb-3">
+                            <label for="newDepartmentName" class="form-label">Nome do Departamento</label>
+                            <input type="text" class="form-control" id="newDepartmentName" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-accent" id="saveDepartment">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para histórico de avaliações -->
+    <div class="modal fade" id="evaluationHistoryModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Histórico de Avaliações - <span id="collaboratorName"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Auto Avaliação</h5>
+                                    <h2 class="card-text">85</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Gestor</h5>
+                                    <h2 class="card-text">78</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Potencial</h5>
+                                    <h2 class="card-text">92</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Competência</th>
+                                    <th>Período</th>
+                                    <th>Nota Gestor</th>
+                                    <th>Nota Funcionário</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Comprometimento</td>
+                                    <td>AVA_JUN2017</td>
+                                    <td>10</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>Liderança</td>
+                                    <td>AVA_JUN2017</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>Comunicação</td>
+                                    <td>AVA_JUN2017</td>
+                                    <td>9</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>Comprometimento</td>
+                                    <td>AVA_DEZ2017</td>
+                                    <td>9</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>Liderança</td>
+                                    <td>AVA_DEZ2017</td>
+                                    <td>9</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>Comunicação</td>
+                                    <td>AVA_DEZ2017</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addIndicatorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Indicador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="indicatorForm">
+                        <div class="mb-3">
+                            <label for="indicatorName" class="form-label">Nome do Indicador</label>
+                            <input type="text" class="form-control" id="indicatorName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="indicatorDescription" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="indicatorDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="indicatorType" class="form-label">Tipo</label>
+                            <select class="form-select" id="indicatorType" required>
+                                <option value="">Selecione...</option>
+                                <option value="gestor">Para Gestores</option>
+                                <option value="nao-gestor">Para Não Gestores</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="indicatorStatus" checked>
+                            <label class="form-check-label" for="indicatorStatus">Indicador ativo</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-accent">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="newEvaluationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nova Avaliação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newEvaluationForm">
+                        <div class="mb-3">
+                            <label for="evaluationCollaborator" class="form-label">Colaborador</label>
+                            <select class="form-select" id="evaluationCollaborator" required>
+                                <option value="">Selecione...</option>
+                                <option value="1">Maria A. Xavier</option>
+                                <option value="2">José H. Moura</option>
+                                <option value="3">Vagner F.</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="evaluationType" class="form-label">Tipo de Avaliação</label>
+                            <select class="form-select" id="evaluationType" required>
+                                <option value="">Selecione...</option>
+                                <option value="auto-gestor">Auto Avaliação - Gestor</option>
+                                <option value="comp-gestor">Avaliação de Competências - Gestor</option>
+                                <option value="potencial-gestor">Avaliação de Potencial - Gestor</option>
+                                <option value="auto-nao-gestor">Auto Avaliação - Não Gestor</option>
+                                <option value="comp-nao-gestor">Avaliação de Competências - Não Gestor</option>
+                                <option value="potencial-nao-gestor">Avaliação de Potencial - Não Gestor</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="evaluationCycle" class="form-label">Ciclo de Avaliação</label>
+                            <select class="form-select" id="evaluationCycle" required>
+                                <option value="">Selecione...</option>
+                                <option value="2023-2">JUL/2023</option>
+                                <option value="2023-1">JAN/2023</option>
+                                <option value="2022-2">JUL/2022</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-accent">Iniciar Avaliação</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

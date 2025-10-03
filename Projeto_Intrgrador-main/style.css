@@ -1,0 +1,262 @@
+
+        :root {
+            --primary-light: #e4e8ef;
+            --primary-dark: #000000;
+            --primary-gray: #d7d9dc;
+            --secondary-light: #f6edfc;
+            --secondary-dark: #061578;
+            --accent: #51f799;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .navbar {
+            background-color: var(--secondary-dark);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        
+        .nav-link.active {
+            background-color: var(--secondary-dark);
+            border-radius: 5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-dark);
+            border-color: var(--secondary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #0a1e8d;
+            border-color: #0a1e8d;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+        
+        .btn-accent:hover {
+            background-color: #3ed983;
+        }
+        
+        .card-header {
+            background-color: var(--secondary-light);
+            color: var(--secondary-dark);
+            font-weight: bold;
+            border-bottom: 1px solid var(--primary-gray);
+        }
+        
+        .sidebar {
+            background-color: white;
+            min-height: calc(100vh - 56px);
+            padding: 20px 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-sticky {
+            position: sticky;
+            top: 70px;
+        }
+        
+        .sidebar .nav-link {
+            color: var(--primary-dark) !important;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            color: var(--secondary-dark);
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: var(--secondary-dark);
+            color: white !important;
+        }
+        
+        .sidebar .nav-link.active i {
+            color: white;
+        }
+        
+        .content-section {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .indicator-card {
+            transition: all 0.3s;
+            margin-bottom: 15px;
+            border: 1px solid var(--primary-gray);
+        }
+        
+        .indicator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .indicator-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .status-ativo {
+            background-color: var(--accent);
+            color: var(--primary-dark);
+        }
+        
+        .status-inativo {
+            background-color: #ccc;
+            color: #666;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .ninebox-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .ninebox-cell {
+            border: 1px solid var(--primary-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+            transition: all 0.3s;
+        }
+        
+        .ninebox-cell:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .highlight {
+            background-color: var(--secondary-light);
+            font-weight: bold;
+        }
+        
+        .evaluation-tab {
+            display: none;
+        }
+        
+        .evaluation-tab.active {
+            display: block;
+        }
+        
+        .competence-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid var(--primary-gray);
+        }
+        
+        .comparison-chart {
+            margin-top: 30px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--secondary-dark);
+        }
+        
+        .database-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid var(--primary-gray);
+        }
+        
+        /* Ajuste para as abas de avaliação */
+        .nav-tabs .nav-link {
+            color: var(--primary-dark);
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--secondary-dark);
+            font-weight: bold;
+        }
+        
+        /* Estilos para as escalas de avaliação */
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--primary-light);
+            border-radius: 5px;
+        }
+        
+        .rating-item {
+            text-align: center;
+            flex: 1;
+            padding: 5px;
+        }
+        
+        .rating-label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .rating-value {
+            font-size: 11px;
+        }
+        
+        /* Toast de notificação */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        
+        .toast-success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+        
+        .toast-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        
+        /* Input group para selects com botão de adicionar */
+        .input-group-addon {
+            cursor: pointer;
+        }
